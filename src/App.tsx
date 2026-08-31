@@ -35,7 +35,7 @@ export default function App() {
           <img className="logo" src="/data8-logo.png" alt="Data 8" />
           <div>
             <h1>Table Function Visualizer</h1>
-            <p>Data 8 · datascience library · Python Tutor–style walkthroughs</p>
+            <p>Data 8</p>
           </div>
         </div>
         <div className="dataset-meta">
