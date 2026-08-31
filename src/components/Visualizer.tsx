@@ -50,8 +50,11 @@ export function Visualizer({
               You will first see an explanation; press Next to step through the animation row by
               row.
             </p>
+            <p className="synthetic-note">
+              All values in this table are AI-generated and synthetic — not real student records.
+            </p>
           </div>
-          <TableGrid table={table} caption="students  ·  100 rows × 10 columns" />
+          <TableGrid table={table} caption="students  ·  100 rows × 10 columns (synthetic)" />
         </div>
       ) : stage === "briefing" ? (
         <>

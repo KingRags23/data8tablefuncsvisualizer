@@ -96,6 +96,13 @@ select {
   font-size: 13px;
 }
 
+.dataset-meta {
+  display: grid;
+  gap: 6px;
+  justify-items: end;
+  max-width: 340px;
+}
+
 .dataset-chip {
   background: var(--card);
   border: 1px solid var(--line);
@@ -109,6 +116,20 @@ select {
 .dataset-chip strong {
   color: var(--blue);
   font-family: "IBM Plex Mono", monospace;
+}
+
+.synthetic-note {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--ink);
+  font-weight: 700;
+  text-align: right;
+}
+
+.empty-viz .synthetic-note {
+  margin-top: 8px;
+  text-align: left;
 }
 
 .desc {

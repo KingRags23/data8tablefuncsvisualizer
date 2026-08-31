@@ -38,9 +38,14 @@ export default function App() {
             <p>Data 8 · datascience library · Python Tutor–style walkthroughs</p>
           </div>
         </div>
-        <div className="dataset-chip">
-          Loaded table <strong>students</strong> · {numRows(table)} rows · {table.labels.length}{" "}
-          columns
+        <div className="dataset-meta">
+          <div className="dataset-chip">
+            Loaded table <strong>students</strong> · {numRows(table)} rows · {table.labels.length}{" "}
+            columns
+          </div>
+          <p className="synthetic-note">
+            Note: all data in this table is AI-generated and synthetic. It is not real student data.
+          </p>
         </div>
       </header>
 

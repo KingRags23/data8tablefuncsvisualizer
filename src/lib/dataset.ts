@@ -1,14 +1,20 @@
-import { choice, mulberry32, randInt } from "./rng";
+import { choice, mulberry32, randInt, shuffledIndices } from "./rng";
 import { tableFromRows, type CellValue, type TableData } from "./table";
 
+/** 90 unique first names: a mix of common English names and names from many backgrounds. */
 const NAMES = [
-  "Aisha", "Alex", "Amelia", "Andre", "Anika", "Arjun", "Ava", "Ben",
-  "Caleb", "Camila", "Chen", "Chloe", "Daniel", "Diego", "Elena", "Eli",
-  "Emma", "Fatima", "Gabriel", "Grace", "Hana", "Hannah", "Ian", "Isabel",
-  "Jada", "James", "Jordan", "Kai", "Karim", "Keiko", "Lena", "Leo",
-  "Liam", "Maya", "Mei", "Miguel", "Mina", "Nadia", "Nina", "Noah",
-  "Omar", "Priya", "Rafael", "Riya", "Sam", "Sofia", "Talia", "Theo",
-  "Uma", "Victor", "Wei", "Yara", "Zara",
+  "Alex", "Amanda", "Amy", "Andrew", "Anna", "Ben", "Brian", "Caroline",
+  "Chris", "Daniel", "David", "Emily", "Emma", "Eric", "Grace", "Hannah",
+  "Jack", "Jacob", "James", "Jessica", "John", "Julia", "Katie", "Kevin",
+  "Laura", "Luke", "Mark", "Mary", "Matt", "Megan", "Michael", "Nathan",
+  "Nicole", "Olivia", "Peter", "Rachel", "Ryan", "Sam", "Sarah", "Sophie",
+  "Stephanie", "Thomas", "Tom", "William", "Zoe",
+  "Aisha", "Amir", "Ananya", "Andres", "Arjun", "Camila", "Carlos", "Chen",
+  "Diego", "Elena", "Fatima", "Gabriel", "Hana", "Hiro", "Imani", "Isabel",
+  "Jamal", "Jasmine", "Kai", "Karim", "Keiko", "Kenji", "Laila", "Luis",
+  "Malik", "Maria", "Mateo", "Mei", "Miguel", "Nadia", "Nia", "Omar",
+  "Priya", "Rafael", "Riya", "Rosa", "Sanjay", "Sofia", "Talia", "Thiago",
+  "Uma", "Valentina", "Wei", "Xavier", "Yara",
 ];
 
 const YEARS = ["Freshman", "Sophomore", "Junior", "Senior"] as const;
@@ -55,6 +61,21 @@ function round1(n: number): number {
   return Math.round(n * 10) / 10;
 }
 
+/** Build 100 names from 90 unique names, with no name appearing more than twice. */
+function assignNames(rng: () => number): string[] {
+  if (NAMES.length !== 90) {
+    throw new Error(`Expected 90 unique names, got ${NAMES.length}.`);
+  }
+  const order = shuffledIndices(rng, NAMES.length).map((i) => NAMES[i]);
+  const names = [...order];
+  // Duplicate 10 names so 100 rows use exactly 90 unique names (80 once + 10 twice).
+  const duplicateCount = 10;
+  for (let i = 0; i < duplicateCount; i++) {
+    names.push(order[i]);
+  }
+  return shuffledIndices(rng, names.length).map((i) => names[i]);
+}
+
 export const TABLE_NAME = "students";
 
 export function createStudentsTable(): TableData {
@@ -72,6 +93,7 @@ export function createStudentsTable(): TableData {
     "Club Member",
   ];
 
+  const assignedNames = assignNames(rng);
   const rows: Record<string, CellValue>[] = [];
   for (let i = 0; i < 100; i++) {
     const year = weightedChoice(rng, YEARS, YEAR_WEIGHTS);
@@ -82,7 +104,7 @@ export function createStudentsTable(): TableData {
     const midterm = Math.min(99, Math.max(42, Math.round(55 + gpa * 8 + (rng() - 0.4) * 18)));
     const hours = Math.max(4, Math.round(8 + (4 - gpa) * 6 + rng() * 10));
     rows.push({
-      Name: choice(rng, NAMES),
+      Name: assignedNames[i],
       Year: year,
       Major: major,
       GPA: gpa,

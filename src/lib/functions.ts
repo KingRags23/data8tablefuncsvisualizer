@@ -332,7 +332,6 @@ export const FUNCTION_ORDER: FunctionId[] = [
   "num_rows",
   "num_columns",
   "labels",
-  "split",
   "show",
   "column",
   "select",
@@ -341,5 +340,4 @@ export const FUNCTION_ORDER: FunctionId[] = [
   "where",
   "take",
   "sort",
-  "sample",
 ];

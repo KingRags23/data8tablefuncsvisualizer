@@ -42,7 +42,7 @@ export function PlaybackBar({
           <i style={{ background: "var(--drop-bg)" }} /> drop
         </span>
         <span>
-          <i style={{ background: "var(--picked-bg)" }} /> sampled / taken
+          <i style={{ background: "var(--picked-bg)" }} /> taken
         </span>
       </div>
       <span className="step-num">

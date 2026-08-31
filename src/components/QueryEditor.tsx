@@ -2,9 +2,7 @@ import type { ReactNode } from "react";
 import { FUNCTION_INFO, FUNCTION_ORDER, type FunctionId, type Query } from "../lib/functions";
 import { RELABEL_OPTIONS, uniqueValues } from "../lib/dataset";
 import {
-  SAMPLE_K_PRESETS,
   SHOW_PRESETS,
-  SPLIT_PRESETS,
   TAKE_PRESETS,
   containedInChoices,
   containingChoices,
@@ -320,20 +318,6 @@ export function QueryEditor({
           {query.fn === "num_rows" || query.fn === "num_columns" || query.fn === "labels" ? null : (
             <>
               <span className="code-punct">(</span>
-              {query.fn === "split" ? (
-                <MiniSelect
-                  ariaLabel="n"
-                  value={String(query.n)}
-                  onChange={(value) => onChange({ fn: "split", n: Number(value) })}
-                >
-                  {SPLIT_PRESETS.map((n) => (
-                    <option key={n} value={n}>
-                      {n}
-                    </option>
-                  ))}
-                </MiniSelect>
-              ) : null}
-
               {query.fn === "show" ? (
                 <MiniSelect
                   ariaLabel="n"
@@ -447,31 +431,6 @@ export function QueryEditor({
                 </>
               ) : null}
 
-              {query.fn === "sample" ? (
-                <>
-                  <MiniSelect
-                    ariaLabel="k"
-                    value={String(query.k)}
-                    onChange={(value) => onChange({ ...query, k: Number(value) })}
-                  >
-                    {SAMPLE_K_PRESETS.map((k) => (
-                      <option key={k} value={k}>
-                        {k}
-                      </option>
-                    ))}
-                  </MiniSelect>
-                  <span className="code-punct">,</span>
-                  <span className="code-static">with_replacement=</span>
-                  <MiniSelect
-                    ariaLabel="with_replacement"
-                    value={query.withReplacement ? "True" : "False"}
-                    onChange={(value) => onChange({ ...query, withReplacement: value === "True" })}
-                  >
-                    <option value="True">True</option>
-                    <option value="False">False</option>
-                  </MiniSelect>
-                </>
-              ) : null}
               <span className="code-punct">)</span>
             </>
           )}

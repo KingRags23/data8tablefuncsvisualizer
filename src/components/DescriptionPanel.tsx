@@ -34,9 +34,7 @@ export function DescriptionPanel({
     <section className="desc">
       <div className="desc-toggle static">
         <div>
-          <div className="desc-kicker">
-            {info.chapter} · output: {info.output}
-          </div>
+          <div className="desc-kicker">output: {info.output}</div>
           <h2>{info.signature}</h2>
         </div>
       </div>

@@ -778,6 +778,5 @@ export const EXAMPLE_CALLS = [
   'students.select("Name", "Major", "GPA")',
   'students.sort("Midterm", descending=True)',
   "students.take(np.arange(5))",
-  "students.sample(10, with_replacement=False)",
   "students.num_rows",
 ];
