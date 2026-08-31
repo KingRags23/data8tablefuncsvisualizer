@@ -32,7 +32,7 @@ export default function App() {
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <div className="mark">D8</div>
+          <img className="logo" src="/data8-logo.png" alt="Data 8" />
           <div>
             <h1>Table Function Visualizer</h1>
             <p>Data 8 · datascience library · Python Tutor–style walkthroughs</p>
