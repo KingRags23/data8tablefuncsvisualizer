@@ -1,4 +1,4 @@
-# Data 8 Table Function Visualizer
+# Data 8 Table Functions Visualizer
 
 Interactive, Python Tutor–style walkthroughs of `datascience` table methods for Data 8.
 

@@ -34,7 +34,7 @@ export default function App() {
         <div className="brand">
           <img className="logo" src="/data8-logo.png" alt="Data 8" />
           <div>
-            <h1>Table Function Visualizer</h1>
+            <h1>Table Functions Visualizer</h1>
             <p>Data 8</p>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function App() {
             columns
           </div>
           <p className="synthetic-note">
-            Note: all data in this table is AI-generated and synthetic. It is not real student data.
+            Note: All data in this table is AI-generated and synthetic. It is not real student data.
           </p>
         </div>
       </header>
