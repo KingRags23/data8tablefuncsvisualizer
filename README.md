@@ -4,6 +4,10 @@ Interactive, Python Tutor–style walkthroughs of `datascience` table methods fo
 
 The app loads a synthetic `students` table (100 rows × 10 columns). All values are AI-generated for teaching demos and are not real student data. Students pick a method and arguments from menus — no free typing — then step through what the call does.
 
+## Live site
+
+https://kingrags23.github.io/data8tablefuncsvisualizer/
+
 ## Run locally
 
 ```bash
@@ -12,6 +16,13 @@ npm run dev
 ```
 
 Then open the URL Vite prints (usually `http://localhost:5173`).
+
+Local preview of the GitHub Pages build:
+
+```bash
+npm run build
+npm run preview
+```
 
 ## Methods included
 

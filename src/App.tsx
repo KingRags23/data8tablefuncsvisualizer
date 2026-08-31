@@ -32,7 +32,7 @@ export default function App() {
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <img className="logo" src="/data8-logo.png" alt="Data 8" />
+          <img className="logo" src={`${import.meta.env.BASE_URL}data8-logo.png`} alt="Data 8" />
           <div>
             <h1>Table Functions Visualizer</h1>
             <p>Data 8</p>
