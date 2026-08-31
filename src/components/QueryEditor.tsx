@@ -50,26 +50,20 @@ function ColumnSelect({
 }: {
   table: TableData;
   value: string | number;
-  onChange: (value: string | number) => void;
+  onChange: (value: string) => void;
   ariaLabel: string;
 }) {
+  const selected =
+    typeof value === "number" ? table.labels[value] ?? table.labels[0] : value;
   return (
     <MiniSelect
       ariaLabel={ariaLabel}
-      value={typeof value === "number" ? `i:${value}` : `n:${value}`}
-      onChange={(raw) => {
-        if (raw.startsWith("i:")) onChange(Number(raw.slice(2)));
-        else onChange(raw.slice(2));
-      }}
+      value={selected}
+      onChange={(raw) => onChange(raw)}
     >
       {table.labels.map((label) => (
-        <option key={`n:${label}`} value={`n:${label}`}>
+        <option key={label} value={label}>
           "{label}"
-        </option>
-      ))}
-      {table.labels.map((label, index) => (
-        <option key={`i:${index}`} value={`i:${index}`}>
-          {index} ({label})
         </option>
       ))}
     </MiniSelect>
